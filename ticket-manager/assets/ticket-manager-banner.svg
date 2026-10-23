@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260" role="img" aria-labelledby="title desc">
+<title id="title">TicketManager</title><desc id="desc">Bunter Banner mit Ticket-Symbol und Python-Lernprojekt</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#13214e"/><stop offset=".55" stop-color="#293d89"/><stop offset="1" stop-color="#176d84"/></linearGradient><linearGradient id="ticket" x2="1" y2="1"><stop stop-color="#64d8ff"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs>
+<rect width="900" height="260" rx="25" fill="url(#bg)"/>
+<circle cx="790" cy="38" r="110" fill="#ffffff" opacity=".05"/><circle cx="660" cy="250" r="120" fill="#22d3ee" opacity=".08"/>
+<g transform="translate(68 72)"><rect width="124" height="118" rx="24" fill="url(#ticket)"/><path d="M24 36h76M24 59h52M24 82h64" stroke="#1e2d62" stroke-width="10" stroke-linecap="round"/><circle cx="99" cy="87" r="21" fill="#34d399"/><path d="m90 87 6 6 12-14" fill="none" stroke="#103d42" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="230" y="118" font-family="DejaVu Sans,Arial,sans-serif" font-size="52" font-weight="700" fill="#fff">TicketManager</text>
+<text x="232" y="162" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" fill="#c4e9ff">Python · IT-Support · Lernen durch Praxis</text>
+<rect x="230" y="186" width="270" height="6" rx="3" fill="#34d399"/>
+</svg>
