@@ -1,44 +1,4 @@
-tickets = [
-    {
-        "id": 1, "titel": "Drucker funktioniert nicht",
-        "prioritaet": "hoch",
-        "status": "offen"
-    },
-
-    {
-        "id": 2, "titel": "Passwort zurücksetzen",
-        "prioritaet": "mittel",
-        "status": "erledigt"
-    },
-
-    {
-        "id": 3, "titel": "Server nicht erreichbar",
-        "prioritaet": "hoch",
-        "status": "offen"
-    },
-
-    {
-        "id": 4, "titel": "Software installieren",
-        "prioritaet": "niedrig",
-        "status": "offen"
-    },
-
-    {
-        "id": 5, "titel": "Netzwerkproblem",
-        "prioritaet": "hoch",
-        "status": "erledigt"
-    },
-
-    {
-        "id": 6, "titel": "VPN-Verbindung gestört",
-        "prioritaet": "mittel",
-        "status": "offen"
-    },
-    {
-        "id": 7,
-        "titel": "Unbekannter Fehler"
-    }
-]
+tickets = []
 
 
 def kritische_tickets(tickets):
@@ -48,10 +8,6 @@ def kritische_tickets(tickets):
         if wichtig.get('prioritaet') == 'hoch' and wichtig.get('status') == 'offen':
             prio_liste.append(wichtig)
     return prio_liste
-
-
-print(kritische_tickets(tickets))
-print('######################')
 
 
 def ticket_abschliessen(tickets, ticket_id):
@@ -67,14 +23,6 @@ def ticket_abschliessen(tickets, ticket_id):
                 return f"ID {ticket.get('id')} ist bereits erledigt"
 
     return f"Ticket {ticket_id} existiert nicht"
-
-
-print(ticket_abschliessen(tickets, 3))
-print(ticket_abschliessen(tickets, 3))
-
-print(ticket_abschliessen(tickets, 4))
-print(ticket_abschliessen(tickets, 8))
-print('########################')
 
 
 def ticket_statistik(tickets):
@@ -98,17 +46,44 @@ def ticket_statistik(tickets):
     return fertiger_dict
 
 
+def ticket_validieren(ticket):
+    return 'id' in ticket and 'titel' in ticket and 'status' in ticket
+
+
+def ticket_erstellen(tickets, titel, prioritaet):
+    ids = []
+
+    for ticket in tickets:
+        ids.append(ticket['id'])
+
+    if not ids:
+        neue_id = 1
+    else:
+        neue_id = max(ids) + 1
+
+    neues_ticket = {
+        'id': neue_id,
+        'titel': titel,
+        'prioritaet': prioritaet,
+        'status': 'offen'
+    }
+
+    tickets.append(neues_ticket)
+    return neues_ticket
+
+
+print('---- Erstellt ----')
+print(ticket_erstellen(tickets, "Monitor defekt", "hoch"))
+print(ticket_erstellen(tickets, "Tastatur defekt", "mittel"))
+print('---- Gefunden ----')
+print(ticket_abschliessen(tickets, ticket_id=1))
+print('---- Statistik ----')
 print(ticket_statistik(tickets))
 
-print('###################')
-
-
-def ticket_validieren(ticket):
-
-    if 'id' in ticket and 'titel' in ticket and 'status' in ticket:
-        return True
-    return False
-
+print('---- Validation ----')
 
 for ticket in tickets:
-    print(f"Ticket {ticket.get('id')}: {ticket_validieren(ticket)}")
+    if ticket_validieren(ticket):
+        print(f"Ticket {ticket.get('id')}: Gültig")
+    else:
+        print(f"Ticket {ticket.get('id')}: Ungültige Eingabe")
